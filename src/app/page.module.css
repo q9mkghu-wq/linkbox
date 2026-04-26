@@ -37,14 +37,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 15px;
   color: white;
 }
 
 .logoText {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
-  font-size: 17px;
+  font-size: 20px;
   color: var(--text);
   letter-spacing: -0.03em;
 }
@@ -68,12 +68,12 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 10px;
+  padding: 9px 10px;
   border-radius: 8px;
   border: none;
   background: transparent;
   color: var(--text2);
-  font-size: 13.5px;
+  font-size: 16px;
   text-align: left;
   transition: background 0.15s, color 0.15s;
 }
@@ -89,8 +89,8 @@
 }
 
 .catDot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   flex-shrink: 0;
 }
@@ -103,7 +103,7 @@
 }
 
 .catCount {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--text3);
   background: var(--bg3);
   padding: 1px 6px;
@@ -116,7 +116,7 @@
   color: var(--text3);
   padding: 4px 5px;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1;
   opacity: 0;
   transition: opacity 0.15s, background 0.15s;
@@ -133,12 +133,12 @@
 
 .addCatBtn {
   margin: 0.75rem;
-  padding: 8px;
+  padding: 10px;
   border-radius: 8px;
   border: 1px dashed var(--border2);
   background: transparent;
   color: var(--text3);
-  font-size: 13px;
+  font-size: 15px;
   transition: all 0.15s;
 }
 
@@ -178,14 +178,14 @@
 }
 
 .pageTitle {
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--text);
 }
 
 .linkCount {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text3);
 }
 
@@ -204,18 +204,18 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 13px;
+  font-size: 15px;
   pointer-events: none;
 }
 
 .searchInput {
-  padding: 7px 12px 7px 30px;
+  padding: 8px 12px 8px 32px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg2);
   color: var(--text);
-  font-size: 13px;
-  width: 180px;
+  font-size: 15px;
+  width: 200px;
   outline: none;
   transition: border-color 0.15s;
 }
@@ -225,12 +225,12 @@
 }
 
 .addBtn {
-  padding: 8px 16px;
+  padding: 9px 18px;
   border-radius: 8px;
   border: none;
   background: var(--red);
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   white-space: nowrap;
   transition: background 0.15s;
@@ -243,8 +243,8 @@
 /* Grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
   padding: 1.5rem;
 }
 
@@ -296,15 +296,15 @@
 }
 
 .playIcon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: rgba(255,60,60,0.8);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 14px;
+  font-size: 16px;
   padding-left: 3px;
 }
 
@@ -326,18 +326,18 @@
 .playBadge {
   background: rgba(255,255,255,0.9);
   color: #111;
-  padding: 5px 12px;
+  padding: 6px 14px;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .cardBody {
-  padding: 10px 12px;
+  padding: 12px 14px;
 }
 
 .cardTitle {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--text);
   line-height: 1.4;
@@ -345,7 +345,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .cardMeta {
@@ -355,8 +355,8 @@
 }
 
 .cardCat {
-  font-size: 11px;
-  padding: 2px 8px;
+  font-size: 13px;
+  padding: 3px 10px;
   border-radius: 99px;
   border: 1px solid;
   font-weight: 500;
@@ -371,8 +371,8 @@
   background: none;
   border: 1px solid var(--border);
   border-radius: 5px;
-  padding: 3px 6px;
-  font-size: 11px;
+  padding: 4px 8px;
+  font-size: 13px;
   color: var(--text3);
   transition: all 0.15s;
 }
@@ -402,7 +402,7 @@
 }
 
 .emptyIcon {
-  font-size: 40px;
+  font-size: 48px;
 }
 
 .loading {
@@ -414,7 +414,7 @@
   flex: 1;
   padding: 4rem;
   color: var(--text2);
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .spinner {
@@ -448,7 +448,7 @@
   border: 1px solid var(--border2);
   border-radius: 14px;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   box-shadow: 0 24px 80px rgba(0,0,0,0.6);
 }
 
@@ -461,7 +461,7 @@
 }
 
 .modalTitle {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   font-family: 'Syne', sans-serif;
@@ -471,7 +471,7 @@
   background: none;
   border: none;
   color: var(--text3);
-  font-size: 16px;
+  font-size: 18px;
   padding: 2px 6px;
   border-radius: 5px;
   transition: all 0.15s;
@@ -494,7 +494,7 @@
 }
 
 .label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text2);
   text-transform: uppercase;
@@ -505,12 +505,12 @@
 
 .input {
   width: 100%;
-  padding: 8px 11px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg3);
   color: var(--text);
-  font-size: 13.5px;
+  font-size: 15px;
   outline: none;
   transition: border-color 0.15s;
 }
@@ -521,17 +521,17 @@
 
 .select {
   width: 100%;
-  padding: 8px 11px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg3);
   color: var(--text);
-  font-size: 13.5px;
+  font-size: 15px;
   outline: none;
 }
 
 .hint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text3);
   margin-top: 4px;
 }
@@ -558,7 +558,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 32px;
   color: rgba(255,255,255,0.7);
   background: rgba(0,0,0,0.3);
 }
@@ -570,8 +570,8 @@
 }
 
 .colorSwatch {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   border: 2px solid transparent;
   transition: transform 0.15s, border-color 0.15s;
@@ -595,12 +595,12 @@
 }
 
 .cancelBtn {
-  padding: 8px 16px;
+  padding: 9px 18px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: transparent;
   color: var(--text2);
-  font-size: 13px;
+  font-size: 15px;
   transition: all 0.15s;
 }
 
@@ -619,12 +619,12 @@
 }
 
 .saveBtn {
-  padding: 8px 20px;
+  padding: 9px 22px;
   border-radius: 8px;
   border: none;
   background: var(--red);
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   transition: background 0.15s;
 }
