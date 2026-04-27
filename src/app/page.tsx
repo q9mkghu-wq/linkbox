@@ -176,7 +176,9 @@ function LinkCard({ link, catColor, onEdit, onDelete }: {
         </div>
       </a>
       <div className={styles.cardBody}>
-        <p className={styles.cardTitle}>{link.title}</p>
+        <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.cardTitleLink}>
+          <p className={styles.cardTitle}>{link.title}</p>
+        </a>
         <div className={styles.cardMeta}>
           <span className={styles.cardCat} style={{ borderColor: catColor, color: catColor }}>
             {link.categoryName}
