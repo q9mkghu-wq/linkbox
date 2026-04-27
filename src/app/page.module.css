@@ -648,3 +648,12 @@
   .addCatBtn { margin: 0; }
   .grid { padding: 1rem; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
 }
+
+.cardTitleLink {
+  text-decoration: none;
+  color: inherit;
+}
+.cardTitleLink:hover .cardTitle {
+  text-decoration: underline;
+  opacity: 0.85;
+}
