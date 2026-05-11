@@ -3,6 +3,7 @@
   display: flex;
   min-height: 100vh;
   background: var(--bg);
+  align-items: flex-start;
 }
 
 /* Sidebar */
@@ -158,7 +159,8 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  overflow-y: auto;
+  overflow-y: visible;
+  min-height: 0;
 }
 
 .header {
