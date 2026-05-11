@@ -683,21 +683,32 @@
   .logoText { font-size: 26px; }
 
   .nav {
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     padding: 0;
-    gap: 6px;
+    gap: 4px;
+  }
+
+  .catItem {
+    min-width: 0;
   }
 
   .catBtn {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    padding: 10px 12px;
+    padding: 10px 10px;
+    width: 100%;
   }
 
-  .catDot { width: 12px; height: 12px; }
-  .catCount { font-size: 16px; padding: 3px 10px; }
-  .catEditBtn { opacity: 1; font-size: 18px; }
+  .catName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .catDot { width: 10px; height: 10px; flex-shrink: 0; }
+  .catCount { font-size: 14px; padding: 2px 8px; flex-shrink: 0; }
+  .catEditBtn { opacity: 1; font-size: 16px; flex-shrink: 0; }
 
   .addCatBtn {
     margin: 0;
