@@ -51,7 +51,7 @@ export function getYoutubeId(url: string): string | null {
 
 export function getThumbnail(url: string): string | null {
   const id = getYoutubeId(url)
-  return id ? `https://img.youtube.com/vi/${id}/mqdefault.jpg` : null
+  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null
 }
 
 // ── Category CRUD ──────────────────────────────────────────────────────────
