@@ -68,15 +68,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 10px;
+  padding: 10px 12px;
   border-radius: 8px;
-  border: none;
+  border: 1.5px solid transparent;
   background: transparent;
   color: var(--text2);
   font-size: 22px;
   font-weight: 600;
   text-align: left;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
 .catBtn:hover {
@@ -87,6 +87,7 @@
 .catBtnActive {
   background: rgba(255, 60, 60, 0.1) !important;
   color: var(--red) !important;
+  border-color: rgba(255, 60, 60, 0.3) !important;
 }
 
 .catDot {
