@@ -56,12 +56,14 @@ export default function Home() {
         <nav className={styles.nav}>
           {/* 전체 버튼 */}
           <button
-            className={`${styles.catBtn} ${activeId === 'all' ? styles.catBtnActive : ''}`}
+            className={styles.catBtn}
             onClick={() => setActiveId('all')}
-            style={activeId === 'all'
-              ? { background: hexToRgba('#888888', 0.15), color: '#555' }
-              : { background: hexToRgba('#888888', 0.07), color: '#555' }
-            }
+            style={{
+              background: activeId === 'all' ? 'rgba(100,100,100,0.18)' : 'rgba(100,100,100,0.07)',
+              color: '#444',
+              border: activeId === 'all' ? '1.5px solid rgba(100,100,100,0.3)' : '1.5px solid transparent',
+              fontWeight: activeId === 'all' ? 800 : 600,
+            }}
           >
             <span className={styles.catName}>전체</span>
             <span className={styles.catCount}>{links.length}</span>
@@ -70,12 +72,14 @@ export default function Home() {
           {cats.map(c => (
             <div key={c.id} className={styles.catItem}>
               <button
-                className={`${styles.catBtn} ${activeId === c.id ? styles.catBtnActive : ''}`}
+                className={styles.catBtn}
                 onClick={() => setActiveId(c.id)}
-                style={activeId === c.id
-                  ? { background: hexToRgba(c.color, 0.18), color: c.color, borderColor: hexToRgba(c.color, 0.4) }
-                  : { background: hexToRgba(c.color, 0.08), color: c.color }
-                }
+                style={{
+                  background: activeId === c.id ? hexToRgba(c.color, 0.2) : hexToRgba(c.color, 0.08),
+                  color: c.color,
+                  border: activeId === c.id ? `1.5px solid ${hexToRgba(c.color, 0.5)}` : '1.5px solid transparent',
+                  fontWeight: activeId === c.id ? 800 : 600,
+                }}
               >
                 <span className={styles.catName}>{c.name}</span>
                 <span className={styles.catCount} style={{ background: hexToRgba(c.color, 0.15), color: c.color }}>
