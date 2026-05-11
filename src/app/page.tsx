@@ -15,6 +15,13 @@ const PRESET_COLORS = [
   '#06b6d4','#6366f1','#ec4899','#8b5cf6',
 ]
 
+function hexToRgba(hex: string, alpha: number) {
+  const r = parseInt(hex.slice(1, 3), 16)
+  const g = parseInt(hex.slice(3, 5), 16)
+  const b = parseInt(hex.slice(5, 7), 16)
+  return `rgba(${r},${g},${b},${alpha})`
+}
+
 // ── Main Page ──────────────────────────────────────────────────────────────
 export default function Home() {
   const [cats, setCats] = useState<Category[]>([])
@@ -47,11 +54,15 @@ export default function Home() {
         </div>
 
         <nav className={styles.nav}>
+          {/* 전체 버튼 */}
           <button
             className={`${styles.catBtn} ${activeId === 'all' ? styles.catBtnActive : ''}`}
             onClick={() => setActiveId('all')}
+            style={activeId === 'all'
+              ? { background: hexToRgba('#888888', 0.15), color: '#555' }
+              : { background: hexToRgba('#888888', 0.07), color: '#555' }
+            }
           >
-            <span className={styles.catDot} style={{ background: '#888' }} />
             <span className={styles.catName}>전체</span>
             <span className={styles.catCount}>{links.length}</span>
           </button>
@@ -61,10 +72,15 @@ export default function Home() {
               <button
                 className={`${styles.catBtn} ${activeId === c.id ? styles.catBtnActive : ''}`}
                 onClick={() => setActiveId(c.id)}
+                style={activeId === c.id
+                  ? { background: hexToRgba(c.color, 0.18), color: c.color, borderColor: hexToRgba(c.color, 0.4) }
+                  : { background: hexToRgba(c.color, 0.08), color: c.color }
+                }
               >
-                <span className={styles.catDot} style={{ background: c.color }} />
                 <span className={styles.catName}>{c.name}</span>
-                <span className={styles.catCount}>{links.filter(l => l.categoryId === c.id).length}</span>
+                <span className={styles.catCount} style={{ background: hexToRgba(c.color, 0.15), color: c.color }}>
+                  {links.filter(l => l.categoryId === c.id).length}
+                </span>
               </button>
               <button className={styles.catEditBtn} onClick={() => { setEditTarget(c); setModal('editCat') }} title="편집">⋯</button>
             </div>
@@ -180,7 +196,14 @@ function LinkCard({ link, catColor, onEdit, onDelete }: {
           <p className={styles.cardTitle}>{link.title}</p>
         </a>
         <div className={styles.cardMeta}>
-          <span className={styles.cardCat} style={{ borderColor: catColor, color: catColor }}>
+          <span
+            className={styles.cardCat}
+            style={{
+              background: hexToRgba(catColor, 0.12),
+              color: catColor,
+              borderColor: hexToRgba(catColor, 0.3),
+            }}
+          >
             {link.categoryName}
           </span>
           <div className={styles.cardActions}>
