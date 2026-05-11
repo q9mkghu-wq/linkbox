@@ -714,7 +714,6 @@
   .linkCount { font-size: 18px; }
 
   .headerRight { width: 100%; justify-content: space-between; }
-
   .searchWrap { flex: 1; }
 
   .searchInput {
@@ -729,16 +728,27 @@
     white-space: nowrap;
   }
 
+  /* 2열 그리드 */
   .grid {
-    padding: 1rem;
-    gap: 12px;
-    grid-template-columns: 1fr;
+    padding: 0.75rem;
+    gap: 8px;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .cardBody { padding: 12px 14px; }
-  .cardTitle { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-  .cardCat { font-size: 15px; padding: 5px 12px; }
-  .iconBtn { font-size: 16px; padding: 6px 12px; }
+  /* 카드 썸네일 16:9 비율로 (2열이라 이미 작아짐) */
+  .cardThumb {
+    aspect-ratio: 16/9;
+  }
+
+  .previewWrap {
+    aspect-ratio: 16/9;
+  }
+
+  .cardBody { padding: 8px 10px; }
+  .cardTitle { font-size: 14px; font-weight: 700; margin-bottom: 6px; -webkit-line-clamp: 2; }
+  .cardCat { font-size: 12px; padding: 3px 8px; }
+  .cardActions { gap: 2px; }
+  .iconBtn { font-size: 13px; padding: 4px 8px; }
 
   .empty { font-size: 18px; }
   .loading { font-size: 18px; }
