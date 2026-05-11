@@ -278,7 +278,7 @@
 .cardThumb {
   position: relative;
   width: 100%;
-  aspect-ratio: 32/9;
+  aspect-ratio: 16/9;
   background: var(--bg3);
   overflow: hidden;
 }
@@ -554,7 +554,7 @@
   margin-top: 8px;
   border-radius: 8px;
   overflow: hidden;
-  aspect-ratio: 32/9;
+  aspect-ratio: 16/9;
   background: var(--bg3);
 }
 
