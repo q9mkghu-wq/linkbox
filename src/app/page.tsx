@@ -184,7 +184,21 @@ function LinkCard({ link, catColor, onEdit, onDelete }: {
       <a href={link.url} target="_blank" rel="noopener noreferrer" className={styles.cardThumbLink}>
         <div className={styles.cardThumb}>
           {link.thumbnail ? (
-            <img src={link.thumbnail} alt={link.title} className={styles.thumbImg} />
+            <img
+              src={link.thumbnail}
+              alt={link.title}
+              className={styles.thumbImg}
+              onError={(e) => {
+                const img = e.currentTarget
+                if (img.src.includes('mqdefault')) {
+                  img.src = img.src.replace('mqdefault', 'hqdefault')
+                } else if (img.src.includes('hqdefault')) {
+                  img.src = img.src.replace('hqdefault', 'maxresdefault')
+                } else {
+                  img.style.display = 'none'
+                }
+              }}
+            />
           ) : (
             <div className={styles.thumbFallback}>
               <span className={styles.playIcon}>▶</span>
