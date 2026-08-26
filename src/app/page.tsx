@@ -44,6 +44,24 @@ export default function Home() {
     return matchCat && matchSearch
   })
 
+  // order 기준 정렬 (order 없는 항목은 0으로 취급 → 기존 등록순 유지)
+  const sortedCats = [...cats].sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+
+  // 카테고리 순서 변경 (위/아래 화살표)
+  const moveCategory = async (index: number, direction: -1 | 1) => {
+    const newIndex = index + direction
+    if (newIndex < 0 || newIndex >= sortedCats.length) return
+
+    const withOrder = sortedCats.map((c, i) => ({ ...c, order: i }))
+    const tmp = withOrder[index].order
+    withOrder[index].order = withOrder[newIndex].order
+    withOrder[newIndex].order = tmp
+
+    await Promise.all(
+      withOrder.map(c => updateCategory(c.id, { order: c.order }))
+    )
+  }
+
   return (
     <div className={styles.layout}>
       {/* Sidebar */}
@@ -69,8 +87,26 @@ export default function Home() {
             <span className={styles.catCount}>{links.length}</span>
           </button>
 
-          {cats.map(c => (
+          {sortedCats.map((c, index) => (
             <div key={c.id} className={styles.catItem}>
+              <div className={styles.catArrows}>
+                <button
+                  className={styles.arrowBtn}
+                  onClick={() => moveCategory(index, -1)}
+                  disabled={index === 0}
+                  title="위로"
+                >
+                  ▲
+                </button>
+                <button
+                  className={styles.arrowBtn}
+                  onClick={() => moveCategory(index, 1)}
+                  disabled={index === sortedCats.length - 1}
+                  title="아래로"
+                >
+                  ▼
+                </button>
+              </div>
               <button
                 className={styles.catBtn}
                 onClick={() => setActiveId(c.id)}
