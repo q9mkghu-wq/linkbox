@@ -29,6 +29,7 @@ export interface Category {
   id: string
   name: string
   color: string
+  order?: number
   createdAt: Timestamp
 }
 
@@ -69,7 +70,7 @@ export async function deleteCategory(id: string) {
   return deleteDoc(doc(db, 'categories', id))
 }
 
-export async function updateCategory(id: string, data: Partial<Pick<Category, 'name' | 'color'>>) {
+export async function updateCategory(id: string, data: Partial<Pick<Category, 'name' | 'color' | 'order'>>) {
   return updateDoc(doc(db, 'categories', id), data)
 }
 
