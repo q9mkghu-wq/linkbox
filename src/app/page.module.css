@@ -495,6 +495,8 @@
   width: 100%;
   max-width: 500px;
   box-shadow: 0 24px 80px rgba(0,0,0,0.15);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modalHeader {
@@ -503,6 +505,10 @@
   justify-content: space-between;
   padding: 1.1rem 1.25rem;
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 1;
 }
 
 .modalTitle {
@@ -694,6 +700,36 @@
 .cardTitleLink:hover .cardTitle {
   text-decoration: underline;
   opacity: 0.85;
+}
+
+/* Link 추가 모달 - URL 슬롯(최대 3개) */
+.linkSlot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 14px 14px;
+  margin-top: 18px;
+  background: var(--bg2);
+}
+
+.linkSlotNum {
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  color: var(--text3);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Responsive - Mobile */
