@@ -196,7 +196,7 @@ export default function Home() {
       )}
       {modal === 'addLink' && (
         <Modal title="링크 추가" onClose={() => setModal(null)}>
-          <LinkForm cats={cats} defaultCatId={activeId !== 'all' ? activeId : undefined} onDone={() => setModal(null)} />
+          <AddLinkForm cats={cats} defaultCatId={activeId !== 'all' ? activeId : undefined} onDone={() => setModal(null)} />
         </Modal>
       )}
       {modal === 'editLink' && editTarget && 'url' in editTarget && (
@@ -365,7 +365,97 @@ function EditCategoryForm({ cat, onDone }: { cat: Category; onDone: () => void }
   )
 }
 
-// ── Link Form ──────────────────────────────────────────────────────────────
+// ── Add Link Form (한 번에 최대 3개 URL 등록) ───────────────────────────────
+const EMPTY_SLOTS = 3
+
+function AddLinkForm({ cats, defaultCatId, onDone }: {
+  cats: Category[]
+  defaultCatId?: string
+  onDone: () => void
+}) {
+  const [catId, setCatId] = useState(defaultCatId || cats[0]?.id || '')
+  const [slots, setSlots] = useState(
+    Array.from({ length: EMPTY_SLOTS }, () => ({ url: '', title: '' }))
+  )
+  const [saving, setSaving] = useState(false)
+
+  const updateSlot = (index: number, field: 'url' | 'title', value: string) => {
+    setSlots(prev => {
+      const next = [...prev]
+      next[index] = { ...next[index], [field]: value }
+      return next
+    })
+  }
+
+  const filledSlots = slots
+    .map(s => ({ ...s, url: s.url.trim(), title: s.title.trim() }))
+    .filter(s => s.url)
+
+  const submit = async () => {
+    if (!catId || filledSlots.length === 0) return
+    setSaving(true)
+    const cat = cats.find(c => c.id === catId)
+    try {
+      await Promise.all(
+        filledSlots.map(s =>
+          addLink({
+            url: s.url,
+            title: s.title || '유튜브 동영상',
+            categoryId: catId,
+            categoryName: cat?.name || '',
+            thumbnail: getThumbnail(s.url),
+            videoId: getYoutubeId(s.url),
+          })
+        )
+      )
+      onDone()
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  return (
+    <div className={styles.form}>
+      <label className={styles.label}>분류</label>
+      {cats.length === 0 ? (
+        <p className={styles.hint}>먼저 분류를 추가하세요</p>
+      ) : (
+        <select className={styles.select} value={catId} onChange={e => setCatId(e.target.value)}>
+          {cats.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+        </select>
+      )}
+
+      {slots.map((slot, i) => (
+        <div key={i} className={styles.linkSlot}>
+          <span className={styles.linkSlotNum}>{i + 1}</span>
+          <input
+            className={styles.input}
+            placeholder="유튜브 URL 붙여넣기"
+            value={slot.url}
+            onChange={e => updateSlot(i, 'url', e.target.value)}
+          />
+          <input
+            className={styles.input}
+            placeholder="제목"
+            value={slot.title}
+            onChange={e => updateSlot(i, 'title', e.target.value)}
+          />
+        </div>
+      ))}
+
+      <p className={styles.hint}>URL을 입력한 항목만 저장돼요 ({filledSlots.length}개 준비됨)</p>
+
+      <div className={styles.formFooter}>
+        <button className={styles.cancelBtn} onClick={onDone}>취소</button>
+        <button className={styles.saveBtn} onClick={submit} disabled={saving || filledSlots.length === 0 || !catId}>
+          {saving ? '저장 중...' : `${filledSlots.length}개 저장`}
+        </button>
+      </div>
+    </div>
+  )
+}
+
+// ── Link Form (기존 링크 편집 전용) ──────────────────────────────────────────
 function LinkForm({ cats, editTarget, defaultCatId, onDone }: {
   cats: Category[]
   editTarget?: LinkItem
